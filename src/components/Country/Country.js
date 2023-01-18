@@ -2,5 +2,5 @@ import React from 'react';
 import './Country.css';
 
 export default function Country() {
-  return <div className="country">Country</div>;
+  return <p className="country">Country</p>;
 }

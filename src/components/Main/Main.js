@@ -1,6 +1,15 @@
 import React from 'react';
 import Country from '../Country/Country.js';
+import Search from '../Search/Search.js';
+import { useCountries } from '../../hooks/useCountries..js';
 
 export default function Main() {
-  return <Country />;
+  const countries = useCountries();
+
+  return (
+    <main>
+      <Search />
+      <Country />
+    </main>
+  );
 }
