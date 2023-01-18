@@ -9,7 +9,10 @@ export default function Main() {
   return (
     <main>
       <Search />
-      <Country />
+      {countries.map((country) => (
+        <Country key={country.id} {...country} />
+      ))}
+      ;
     </main>
   );
 }
