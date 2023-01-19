@@ -1,2 +1,8 @@
-.country {
+.countryContainer {
+  padding: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
 }
