@@ -7,16 +7,20 @@ import './Main.css';
 export default function Main() {
   const countries = useCountries();
 
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState('All');
+
+  function filterHandler(e) {
+    if (e === 'All') {
+      return countries.map((country) => <Country key={country.id} {...country} />);
+    } else {
+      return filter.map((country) => <Country key={country.id} {...country} />);
+    }
+  }
 
   return (
     <main>
-      <Search filter={filter} />
-      <div className="countries">
-        {countries.map((country) => (
-          <Country key={country.id} {...country} />
-        ))}
-      </div>
+      <Search setFilter={setFilter} />
+      <div className="countries">{filterHandler(filter)}</div>
     </main>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useCountries } from '../../hooks/useCountries..js';
 import './Search.css';
 
-export default function Search(filter, setFilter) {
+export default function Search({ setFilter }) {
   const countries = useCountries();
   const [option, setOption] = useState('All');
 
@@ -17,20 +17,28 @@ export default function Search(filter, setFilter) {
     'Europe',
   ];
 
-  const handleFilter = (e) => {
+  const handleFilterSelect = (e) => {
     setOption(e.target.value);
+  };
+
+  const handleFilterChange = () => {
+    const filteredData = countries.filter(
+      (country) => country.continent === option || option === 'All'
+    );
+    setFilter(filteredData);
   };
 
   return (
     <div>
-      <select value={option} onChange={handleFilter}>
+      <select value={option} onChange={handleFilterSelect}>
         {continents.map((continent) => (
           <option key={continent} value={continent}>
-            {continent}
+            {continent}{' '}
           </option>
         ))}
         ;
       </select>
+      <button onClick={handleFilterChange}>Search</button>
     </div>
   );
 }
