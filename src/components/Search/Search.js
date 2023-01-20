@@ -3,7 +3,7 @@ import { useCountries } from '../../hooks/useCountries..js';
 import './Search.css';
 
 export default function Search({ setFilter }) {
-  const countries = useCountries();
+  const { countries } = useCountries();
   const [option, setOption] = useState('All');
 
   const continents = [
@@ -33,7 +33,8 @@ export default function Search({ setFilter }) {
       <select value={option} onChange={handleFilterSelect}>
         {continents.map((continent) => (
           <option key={continent} value={continent}>
-            {continent}{' '}
+            {continent}
+            {''}
           </option>
         ))}
         ;

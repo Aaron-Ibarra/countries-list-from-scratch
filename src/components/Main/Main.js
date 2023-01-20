@@ -5,12 +5,12 @@ import { useCountries } from '../../hooks/useCountries..js';
 import './Main.css';
 
 export default function Main() {
-  const countries = useCountries();
+  const { countries, error } = useCountries();
 
   const [filter, setFilter] = useState('All');
 
-  function filterHandler(e) {
-    if (e === 'All') {
+  function filterHandler(data) {
+    if (data === 'All') {
       return countries.map((country) => <Country key={country.id} {...country} />);
     } else {
       return filter.map((country) => <Country key={country.id} {...country} />);
@@ -21,6 +21,7 @@ export default function Main() {
     <main>
       <Search setFilter={setFilter} />
       <div className="countries">{filterHandler(filter)}</div>
+      <p style={{ color: 'red' }}>{error}</p>
     </main>
   );
 }
